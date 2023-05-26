@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 238951167715774545}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Seesaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
