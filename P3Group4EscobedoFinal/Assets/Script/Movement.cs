@@ -34,6 +34,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        readyToJump = true;
     }
 
     private void FixedUpdate()
@@ -46,7 +47,7 @@ public class Movement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(jumpKey) && grounded )
+        if (Input.GetKey(jumpKey) && readyToJump && grounded )
         {
             readyToJump = false;
 
@@ -71,6 +72,7 @@ public class Movement : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         MyInput();
+        SpeedControl();
 
         if (grounded)
         {
@@ -80,7 +82,7 @@ public class Movement : MonoBehaviour
         {
             rb.drag = 0;
         }
-        SpeedControl();
+       
     }
 
     private void Jump()
@@ -92,7 +94,6 @@ public class Movement : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
-
     }
 
     private void SpeedControl()
